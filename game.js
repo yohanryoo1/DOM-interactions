@@ -9,9 +9,9 @@ function start () {
 
 function bindEventListeners (dots) {
   for (var i = 0; i < dots.length; i++) {
-    // BIND YOUR EVENT LISTENERS HERE
-    // The first one is provided for you
     dots[i].addEventListener('contextmenu', makeGreen)
+    dots[i].addEventListener('click', makeBlue) 
+    dots[i].addEventListener('dblclick', hide)
   }
 }
 
@@ -21,19 +21,31 @@ function makeGreen (evt) {
   updateCounts()
 }
 
-// CREATE FUNCTION makeBlue HERE
+function makeBlue (e) {
+  e.target.classList.toggle('blue')
+  updateCounts()
+}
 
-// CREATE FUNCTION hide HERE
+function hide (e) {
+  // removes blue or green class if dot is hidden
+  e.target.classList.remove('blue')
+  e.target.classList.remove('green')
+
+  e.target.classList.toggle('invisible')
+  updateCounts()
+}
 
 function updateCounts () {
+  const blueDots = document.getElementsByClassName('blue')
+  const greenDots = document.getElementsByClassName('green')
+  const invisibleDots = document.getElementsByClassName('invisible')
+  
   var totals = {
-    blue: 0,
-    green: 0,
-    invisible: 0
+    blue: blueDots.length,
+    green: greenDots.length,
+    invisible: invisibleDots.length
   }
   
-  // WRITE CODE HERE TO COUNT BLUE, GREEN, AND INVISIBLE DOTS
-
   // Once you've done the counting, this function will update the display
   displayTotals(totals)
 }
