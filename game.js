@@ -28,8 +28,8 @@ function makeBlue (e) {
 
 function hide (e) {
   // removes blue or green class if dot is hidden
-  e.target.classList.remove('blue')
-  e.target.classList.remove('green')
+  // e.target.classList.remove('blue')
+  // e.target.classList.remove('green')
 
   e.target.classList.toggle('invisible')
   updateCounts()
